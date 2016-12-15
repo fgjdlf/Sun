@@ -1,0 +1,97 @@
+<script>
+	var a = "asdfasdf";
+
+	//获取字符串的长度
+	console.log(a.length);
+
+	//字符串的拼接
+	//如果字符串与其他数据类型的值拼接，会自动把其他类型数据的值先转成string，再拼接
+	//方法1，原始数据不会发生变化
+	console.log(a + 123, a);
+	//方法2，原始数据不会发生变化
+	console.log(a.concat("fdsa"), a);
+
+	//转义
+	var b = "\"";
+	var labelA = "<a href=\"\"></a>";
+	console.log(labelA);
+	console.log("\a"); //输出"a"
+	console.log("\\a"); //输出"\a"
+	console.log("C:\\Users\\Administrator\\Desktop\\JavaScript");
+
+	//查找下标获取字符串中的字符
+	//方法1
+	console.log(a[3]);
+	//方法2
+	console.log(a.charAt(3));
+
+	//通过字符获取其在字符串中的首次出现时的下标
+	//方法1
+	console.log(a.indexOf("a"));
+	//方法2
+	console.log(a.search("d"));
+
+	//通过字符获取其在字符串中的末次出现时的下标
+	console.log(a.lastIndexOf("s"));
+
+	//根据规定的字符串进行字符串分割，结果为分割后的字符串集合，分隔符会被切掉
+	//asdfasdf
+	console.log(a.split("as"));
+	//["", "dfasdf"]
+	//["", "df", "df"]
+	console.log(a.split("z"), a.split()); //如果查找到切割点，则把整个字符串放入长度为1的数组
+	console.log(a.split("")); //根据空字符串进行切割类似于光标从左向右的移动，每次移动一位，把字符放入数组
+
+	//获取字符串中的某一段字符串
+	//方法1
+	console.log(a.substring(0, 3)); //从下标0到下标3之间的这段字符串，左等右不等
+	console.log(a.substring(5)); //相当于从下标5开始，至字符串的末位
+	console.log(a.substring()); //相当于获取字符串本身
+	console.log(a.substring(3, 0)); //自动调转参数为正确的传入方式，即0, 3
+
+	//方法2
+	console.log(a.slice(0, 3)); //同substring
+	console.log(a.slice(5)); //同substring
+	console.log(a.slice()); //同substring
+	console.log(a.slice(3, 0)); //返回空字符串，不同substring
+
+	//替换
+	//替换首个查找到的字符串为指定的字符串
+	console.log(a.replace("as", "qw"));
+	console.log(a.replace("qw", "as")); //如果找不到，则不作任何操作
+	console.log(a.replace("", "233")); //为字符串开头添加字符串
+
+	//字符串转大写
+	console.log(a.toUpperCase());
+
+	//字符串转小写
+	console.log(a.toUpperCase().toLowerCase());
+
+	//去除字符串开始及结尾的空格
+	console.log("      asdf     ".trim());
+
+	//去除字符串开始的空格
+	console.log("      asdf     ".trimLeft());
+
+	//去除字符串结尾的空格
+	console.log("      asdf     ".trimRight());
+
+	//重复字符串
+	console.log("233".repeat(3));
+
+	console.log("233".repeat()); //相当于重复0次，返回空字符串
+
+	//练习
+	//1. 能根据传入的手机号，返回手机号的前三位+五个星号+后三位
+	//2. 能根据传入的身份证号，返回身份证号的前三位+十二个星号+后三位
+	//3. 能根据传入的qq号，返回身份证号的前三位+？个星号+后三位，假设8位以上，最高11位
+
+	function toStarry(tel){
+		tel = tel + "";
+		return tel.slice(0, 3) + "*****" + tel.slice(8);
+	}
+	console.log(toStarry(13000000000)); //输出130*****000
+	console.log(toStarry(18000000099)); //输出180*****099
+	console.log(toStarry(211985000000099111)); //输出211************111
+	console.log(toStarry(412345678)); //输出412***678
+</script>
